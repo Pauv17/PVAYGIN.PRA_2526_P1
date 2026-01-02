@@ -104,10 +104,10 @@ class ListArray : public List<T> {
 		for(int i= 0; i<n; i++){
 			if( arr[i] == e){
 				return i;
-			}else{
-				return -1;
 			}
+			
 		}
+		return -1;
 	}
 
 	bool empty()const override{
@@ -124,17 +124,21 @@ class ListArray : public List<T> {
 		}
 		return arr[pos];
 	}
+
 	friend ostream& operator<<(ostream &out, const ListArray<T> &list) {
-        out << "[";
-        for (int i = 0; i < list.n; ++i) {
-            out << list.arr[i];
-            if (i < list.n - 1) {
-                out << ", ";
-            }
-        }
-        out << "]";
-        return out;
-    }
+			if (list.n == 0) {
+				out << "List => []";
+				return out;
+			}
+
+			out << "List => [\n";
+			for (int i = 0; i < list.n; i++) {
+				out << " " << list.arr[i] << "\n";
+				
+			}
+			out << "]";
+			return out;
+		}
 };
 
 
