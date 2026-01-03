@@ -35,7 +35,7 @@ void Circle::translate(double incX, double incY) {
 }
 
 void Circle::print(std::ostream &out) const {
-	out << "[Círculo: Color = " << get_color() << "; Center = (" << center.x << ", " 
+	out << "[Circle: Color = " << get_color() << "; Center = (" << center.x << ", " 
 				    << center.y << "); Radius = " << radius<<"]";
 }
 
