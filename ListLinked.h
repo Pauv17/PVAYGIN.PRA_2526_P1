@@ -31,27 +31,26 @@ class ListLinked : public List<T> {
 			aux = first->next;
 			delete first;
 			first = aux;
-			}
+		}
 		
 	}
 	void insert(int pos, T e) override{
 
                 if(pos < 0 || pos > n){
                         throw out_of_range("Posición fuera del rango establecido");
-                }
-
-                if(n == 0){
-                        first = new Node<T>(e, first);
-           	}else{
-			Node<T>* prev = first;
-               		for (int i = 0; i < pos-1; i++) {
-                        	prev= prev->next;
-                		}
-			prev->next = new Node<T>(e, prev->next);
-		}	
-
-               	n++;
-         }
+         	}
+		if (pos == 0) {                     // insertar al principio
+ 		       first = new Node<T>(e, first);
+   		 } else {
+       	       
+		 Node<T>* prev = first;
+		 for (int i = 0; i < pos - 1; i++) {
+            		prev = prev->next;
+		}
+        	prev->next = new Node<T>(e, prev->next);
+    		}
+    		n++;
+	}
 
 
         void append(T e)override{
@@ -95,7 +94,7 @@ class ListLinked : public List<T> {
                         throw out_of_range("La posición esta fuera del rango");
                 }
 		 Node<T>* current = first;
-		 for(int i =0; i<pos-1;i++){
+		 for(int i =0; i<pos;i++){
 			 current = current->next;
 		 }
 
@@ -134,14 +133,15 @@ class ListLinked : public List<T> {
 			Node<T>* current = list.first;
 
 			if (current == nullptr){
-				out << "List -> []";
+				out << "List => []";
 				return out;
 			}
 
-			out << "List -> [\n";
+			out << "List => [\n";
 
 			while (current != nullptr) {
-				out << " " << current->da;
+				out << " " << current->data<<"\n";
+				current = current->next;
 				}
 
 			out << "]";
