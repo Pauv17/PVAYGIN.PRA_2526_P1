@@ -39,7 +39,7 @@ class ListLinked : public List<T> {
                 if(pos < 0 || pos > n){
                         throw out_of_range("Posición fuera del rango establecido");
          	}
-		if (pos == 0) {                     // insertar al principio
+		if (pos == 0) {                
  		       first = new Node<T>(e, first);
    		 } else {
        	       
